@@ -7,8 +7,8 @@ const zomatoApiKey = "bdf061b7ff13160c0b5ed3be06170ae7";
 const zomatoUrl = "https://developers.zomato.com/api/v2.1";
 
 
-// Function to generate city id getCity()
-function getCity(userCity) {
+// Function to generate entity_id for the user's city using /locations? endpoint
+function getEntityID(userCity) {
     const options = {
         headers: new Headers({
             'user-key': zomatoApiKey
@@ -32,20 +32,20 @@ function getCity(userCity) {
             throw new Error(response.statusText);
             }) 
             .then(responseJson => {
-                responseJson => getRestaurants(userCity, responseJson.location_suggestions[0].city_id)
-                console.log(responseJson.location_suggestions[0].city_id);
+                getRestaurants(responseJson.location_suggestions[0].entity_id)
                 console.log(responseJson);
-                //displayResults(responseJson, budget)
+                console.log(responseJson.location_suggestions[0].entity_id);
             })
-
             .catch(err => {
                 $('#js-error-message').text(`Uh oh, something broke: ${err.message}`);
                 console.log(err);
     });    
 }
 
-// Generate restaurants based on the location the user entered using the city_id generated from getCity()
-function getRestaurants(userCity, city_id) {
+// Generate restaurants based on the location the user entered using the entity_id generated from getEntityID()
+// https://developers.zomato.com/api/v2.1/search?entity_id=305&entity_type=city
+
+function getRestaurants(entity_id) {
     const options = {
         headers: new Headers({
             'user-key': zomatoApiKey
@@ -53,31 +53,54 @@ function getRestaurants(userCity, city_id) {
     };
 
     const params = {
-        entity_id: city_id,
+        entity_id: entity_id,
         entity_type: "city",
-        count: 5
     };
 
     let queryString = $.param(params);
     const url = zomatoUrl + '/search?' + queryString;
+    console.log(queryString);
 
-    console.log(`Finding restaurants for ${getCity(userCity)}`)
 
     fetch(url, options).then(response => {
             if (response.ok) {
                 return response.json();
             }
             throw new Error(response.statusText);
-        }).then(responseJson => displayRestaurants(responseJson))
+        })
+        .then(responseJson =>{
+            displayRestaurants(responseJson)
+            console.log(responseJson);
+        }) 
+        // .then(responseJson => {
+        //     console.log(responseJson);
+        //    resp displayRestaurants(responseJson))
+        //})    
         .catch(err => {
             $('#js-error-message').text(`Something Failed ${err.message}`);
         })
 }
 
 
-function displayRestaurants() {
-
+// Display restaurants using response from restaurants for a user's given city 
+// !!! Need to create field for budget and add it to conditional statement below
+// Need to figure out how to pull more than the 20 restaurants shown 
+function displayRestaurants(responseJson) {
+    $('#results').empty();
+    for (let i = 0; i < responseJson.restaurants.length; i++) {
+        if (responseJson.restaurants[i].restaurant.average_cost_for_two <= 100) {
+        $('#results').append(`<li>
+        <a href='${responseJson.restaurants[i].restaurant.url}' target="_blank">${responseJson.restaurants[i].restaurant.name}</a> 
+        | <a href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
+        <p>Average Cost for 2 $${responseJson.restaurants[i].restaurant.average_cost_for_two}</p>
+        <br>
+        <br>
+        </li>`)
+        }
+    };
+    $('#results').removeClass("hidden");
 }
+
 
 
 function watchForm() {
@@ -86,7 +109,7 @@ function watchForm() {
       const userCity = $('#js-city').val();
       // const budget = $('#js-max-results').val();
       console.log(userCity)
-      getCity(userCity);
+      getEntityID(userCity);
     })
   }
 

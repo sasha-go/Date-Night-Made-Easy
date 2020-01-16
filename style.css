@@ -1,3 +1,44 @@
 .hidden {
     display: none;
 }
+
+
+  html {
+    background-color: rgba(199, 118, 156, 0.973);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  .container {
+    margin: 15px;
+    padding: 10px;
+  }
+  
+  form {
+  width: 40%;
+  border: solid 1px black;
+  padding: 15px;
+  }
+  
+  input {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 70%;
+  }
+  
+  #js-max-results {
+    width: 25px;
+  }
+  
+  #submitButton {
+    width: 75px;
+    border: 1px solid black;
+  }
+  
+  .latlong {
+    font: bolder;
+  }
+  
+  .error-message {
+    color: red
+  }
