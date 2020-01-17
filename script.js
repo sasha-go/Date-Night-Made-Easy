@@ -87,9 +87,11 @@ function getRestaurants(entity_id) {
 // Need to figure out how to pull more than the 20 restaurants shown 
 function displayRestaurants(responseJson) {
     $('#results').empty();
+    const budget = $('#js-budget').val();
     for (let i = 0; i < responseJson.restaurants.length; i++) {
-        if (responseJson.restaurants[i].restaurant.average_cost_for_two <= 100) {
+        if (responseJson.restaurants[i].restaurant.average_cost_for_two <= budget) {
         $('#results').append(`<li>
+        <img src="${responseJson.restaurants[i].restaurant.featured_image}" alt="featured image for restaurant result" id="featuredImg">
         <a href='${responseJson.restaurants[i].restaurant.url}' target="_blank">${responseJson.restaurants[i].restaurant.name}</a> 
         | <a href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
         <p>Average Cost for 2 $${responseJson.restaurants[i].restaurant.average_cost_for_two}</p>
@@ -102,20 +104,17 @@ function displayRestaurants(responseJson) {
 }
 
 
-
 function watchForm() {
     $('form').submit(event => {
       event.preventDefault();
       const userCity = $('#js-city').val();
-      // const budget = $('#js-max-results').val();
+      const budget = $('#js-budget').val();
       console.log(userCity)
       getEntityID(userCity);
     })
   }
 
   $(watchForm);
-
-
 
 
 
