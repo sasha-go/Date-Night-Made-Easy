@@ -6,26 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Make Date Night Easy</title>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Alata|Bree+Serif|Gayathri|Great+Vibes|IM+Fell+Great+Primer+SC|Kalam|Nanum+Gothic|Sacramento|Josefin+Slab|Quicksand|Ubuntu&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <main>
     <div class="container">
-        <h1>Date Night Made Easy</h1>
+        <img class="mainImg" src="images/mainImg.jpg">
+
+        <h1>Make Date Night<br>Great Again!</h1>
 
         <form id="js-form">
-            <label for="city">What City Do You Live In?</label>
-            <input id="js-city" name="city" placeholder="Denver, CO" required> 
+            <label for="city">Name a city to dine in</label>
+            <input id="js-city" name="city" placeholder="City" required> 
             </input>
-            <label for="budget">What is Your Budget for Two?</label>
-            <input type="number" name="budget" id="js-budget" max="5000" min="20" placeholder="50" required>
+            <label for="budget">What's your budget for two?</label>
+            <input type="number" name="budget" id="js-budget" max="5000" min="20" placeholder="$" required>
             <button type="submit" id="submitButton">Date Time!</button>
         </form>
 
         <p id="jsErrorMsg" class="errorMsg"></p>
 
         <section id="results" class="hidden">
-            <h3>Voila!</h3>
             <ul id="resultsList">
 
             </ul>

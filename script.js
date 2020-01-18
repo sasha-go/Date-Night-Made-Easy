@@ -86,23 +86,43 @@ function getRestaurants(entity_id) {
 // !!! Need to create field for budget and add it to conditional statement below
 // Need to figure out how to pull more than the 20 restaurants shown 
 function displayRestaurants(responseJson) {
+    console.log(responseJson);
     $('#results').empty();
     const budget = $('#js-budget').val();
     for (let i = 0; i < responseJson.restaurants.length; i++) {
         if (responseJson.restaurants[i].restaurant.average_cost_for_two <= budget) {
-        $('#results').append(`<li>
-        <img src="${responseJson.restaurants[i].restaurant.featured_image}" alt="featured image for restaurant result" id="featuredImg">
-        <a href='${responseJson.restaurants[i].restaurant.url}' target="_blank">${responseJson.restaurants[i].restaurant.name}</a> 
-        | <a href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
-        <p>Average Cost for 2 $${responseJson.restaurants[i].restaurant.average_cost_for_two}</p>
-        <br>
-        <br>
+        $('#results').append(
+        `<li>
+            <button class="accordion">
+                ${responseJson.restaurants[i].restaurant.name}<br><span class="cuisine">${responseJson.restaurants[i].restaurant.cuisines}</span><i class="fas fa-plus"></i><i class="fas fa-minus"></i>
+                <div class=panelLinks>
+                    <a id="webLink" href='${responseJson.restaurants[i].restaurant.url}' target="_blank">Website</a>
+                    <a id="menuLink" href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
+                </div>
+            </button>
+
+            <div class="panel hidden">
+                <img id="featuredImg" src="${responseJson.restaurants[i].restaurant.featured_image}" alt="featured image for restaurant result">
+                <div class=panelLinks>
+                    <a id="webLink" href='${responseJson.restaurants[i].restaurant.url}' target="_blank">Website</a>
+                    <a id="menuLink" href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
+                </div>
+                <p>Average Cost for 2: $${responseJson.restaurants[i].restaurant.average_cost_for_two}</p>
+            </div>
         </li>`)
         }
     };
+
     $('#results').removeClass("hidden");
 }
 
+function clickAccordion() {
+    $('body').on('click', '.accordion', function(e) {
+        //console.log(e.target);
+        const button = $(e.target);
+        button.siblings('.panel').toggleClass('hidden');
+    });
+}
 
 function watchForm() {
     $('form').submit(event => {
@@ -114,7 +134,12 @@ function watchForm() {
     })
   }
 
-  $(watchForm);
+  function main() {
+      watchForm();
+      clickAccordion();
+  }
+
+  $(main);
 
 
 
