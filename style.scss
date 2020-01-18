@@ -17,6 +17,7 @@ h1 {
     font-family: bree serif;
     text-align: center;
     color: #EB6A24;
+    //color: white;
     font-size: 50px;
     background-color: #393A36;
     padding-bottom: 15px;
@@ -117,7 +118,7 @@ form {
             font-family: quicksand;
             border-bottom: .5px solid #EB6A24;
             
-            .panelLinks {
+            .panelLinksTablet {
                 display: none;
             }
             
@@ -217,18 +218,11 @@ form {
             display: none;
         }
     }
-
-    
 }
 
 // tablet
 @media screen and (min-width: 768px) {
-.accordion {
 
-    .panelLinksTablet {
-        display: inline-block;
-    }
-}
 }
 
 // desktop

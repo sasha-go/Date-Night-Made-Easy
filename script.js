@@ -95,7 +95,7 @@ function displayRestaurants(responseJson) {
         `<li>
             <button class="accordion">
                 ${responseJson.restaurants[i].restaurant.name}<br><span class="cuisine">${responseJson.restaurants[i].restaurant.cuisines}</span><i class="fas fa-plus"></i><i class="fas fa-minus"></i>
-                <div class=panelLinks>
+                <div class=panelLinksTablet>
                     <a id="webLink" href='${responseJson.restaurants[i].restaurant.url}' target="_blank">Website</a>
                     <a id="menuLink" href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
                 </div>

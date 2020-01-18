@@ -109,7 +109,7 @@ form #submitButton:hover {
   border-bottom: .5px solid #EB6A24;
 }
 
-#results li .accordion .panelLinks {
+#results li .accordion .panelLinksTablet {
   display: none;
 }
 
@@ -204,11 +204,5 @@ form #submitButton:hover {
 
 #results li .hidden {
   display: none;
-}
-
-@media screen and (min-width: 768px) {
-  .accordion .panelLinksTablet {
-    display: inline-block;
-  }
 }
 /*# sourceMappingURL=style.css.map */
