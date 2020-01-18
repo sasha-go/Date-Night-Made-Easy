@@ -138,6 +138,7 @@ function displayRestaurants(responseJson) {
         <p>${restaurantsJson.location.locality_verbose}</p>
         <p>Average Cost for 2 $${restaurantsJson.average_cost_for_two}</p>
         <p>${restaurantsJson.user_rating.aggregate_rating}</p>
+        <p>${restaurantsJson.cuisines}</p>
         </li>`)
         }
     };
