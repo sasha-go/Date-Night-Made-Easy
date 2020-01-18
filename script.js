@@ -122,29 +122,68 @@ function getRestaurants(entity_id) {
 // figure out cuisine 
 
 function displayRestaurants(responseJson) {
+    console.log(responseJson);
     $('#results').empty();
     const budget = $('#js-budget').val();
+
+    
+    // let randomNum = Math.floor(Math.random(responseJson.restaurants.length) * 5) + 1;
+    // console.log(randomNum);
+
+    // for (let i = randomNum; i < responseJson.restaurants.length; i++) {
+    //     let  restaurantsJson = responseJson.restaurants[i].restaurant;
+    //     if (restaurantsJson.average_cost_for_two <= budget && restaurantsJson.user_rating.aggregate_rating > 0) {
+    //     $('#results').append(
+    //     `<li>
+    //     <img src="${restaurantsJson.featured_image}" id="featuredImg" alt="feature image for ${restaurantsJson.name}">
+    //     <a href='${restaurantsJson.url}' target="_blank">${restaurantsJson.name}</a> 
+    //     | <a href='${restaurantsJson.menu_url}' target="_blank">Menu</a>
+    //     <p>${restaurantsJson.location.address}</p>
+    //     <p>${restaurantsJson.location.locality_verbose}</p>
+    //     <p>Average Cost for 2 $${restaurantsJson.average_cost_for_two}</p>
+    //     <p>${restaurantsJson.user_rating.aggregate_rating}</p>
+    //     <p>${restaurantsJson.cuisines}</p>
+
+
+
     let randomNum = Math.floor(Math.random(responseJson.restaurants.length) * 5) + 1;
     console.log(randomNum);
 
-    for (let i = randomNum; i < responseJson.restaurants.length; i++) {
+    for (let i = 0; i < responseJson.restaurants.length; i++) {
         let  restaurantsJson = responseJson.restaurants[i].restaurant;
         if (restaurantsJson.average_cost_for_two <= budget && restaurantsJson.user_rating.aggregate_rating > 0) {
-        $('#results').append(`<li>
-        <img src="${restaurantsJson.featured_image}" id="featuredImg" alt="feature image for ${restaurantsJson.name}">
-        <a href='${restaurantsJson.url}' target="_blank">${restaurantsJson.name}</a> 
-        | <a href='${restaurantsJson.menu_url}' target="_blank">Menu</a>
-        <p>${restaurantsJson.location.address}</p>
-        <p>${restaurantsJson.location.locality_verbose}</p>
-        <p>Average Cost for 2 $${restaurantsJson.average_cost_for_two}</p>
-        <p>${restaurantsJson.user_rating.aggregate_rating}</p>
-        <p>${restaurantsJson.cuisines}</p>
+        $('#results').append(
+        `<li>
+            <button class="accordion">
+                ${responseJson.restaurants[i].restaurant.name}<br><span class="cuisine">${responseJson.restaurants[i].restaurant.cuisines}</span><i class="fas fa-plus"></i><i class="fas fa-minus"></i>
+                <div class=panelLinks>
+                    <a id="webLink" href='${responseJson.restaurants[i].restaurant.url}' target="_blank">Website</a>
+                    <a id="menuLink" href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
+                </div>
+            </button>
+
+            <div class="panel hidden">
+                <img id="featuredImg" src="${responseJson.restaurants[i].restaurant.featured_image}" alt="featured image for restaurant result">
+                <div class=panelLinks>
+                    <a id="webLink" href='${responseJson.restaurants[i].restaurant.url}' target="_blank">Website</a>
+                    <a id="menuLink" href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
+                </div>
+                <p>Average Cost for 2: $${responseJson.restaurants[i].restaurant.average_cost_for_two}</p>
+            </div>
         </li>`)
         }
     };
+
     $('#results').removeClass("hidden");
 }
 
+function clickAccordion() {
+    $('body').on('click', '.accordion', function(e) {
+        //console.log(e.target);
+        const button = $(e.target);
+        button.siblings('.panel').toggleClass('hidden');
+    });
+}
 
 function watchForm() {
     $('form').submit(event => {
@@ -158,7 +197,12 @@ function watchForm() {
     })
   }
 
-  $(watchForm);
+  function main() {
+      watchForm();
+      clickAccordion();
+  }
+
+  $(main);
 
 
 
