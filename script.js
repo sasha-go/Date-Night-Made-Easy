@@ -114,19 +114,11 @@ function getRestaurants(entity_id) {
 }
 
 
-// Display restaurants using response from restaurants for a user's given city 
-// !!! Need to create field for budget and add it to conditional statement below
-// Need to figure out how to pull more than the 20 restaurants shown 
-
-// Figure out mathrandom
-// figure out cuisine 
-
 function displayRestaurants(responseJson) {
     console.log(responseJson);
     $('#results').empty();
     const budget = $('#js-budget').val();
 
-    
     // let randomNum = Math.floor(Math.random(responseJson.restaurants.length) * 5) + 1;
     // console.log(randomNum);
 
@@ -145,30 +137,33 @@ function displayRestaurants(responseJson) {
     //     <p>${restaurantsJson.cuisines}</p>
 
 
-
     let randomNum = Math.floor(Math.random(responseJson.restaurants.length) * 5) + 1;
     console.log(randomNum);
 
-    for (let i = 0; i < responseJson.restaurants.length; i++) {
+    for (let i = randomNum; i < responseJson.restaurants.length; i++) {
         let  restaurantsJson = responseJson.restaurants[i].restaurant;
         if (restaurantsJson.average_cost_for_two <= budget && restaurantsJson.user_rating.aggregate_rating > 0) {
         $('#results').append(
         `<li>
             <button class="accordion">
-                ${responseJson.restaurants[i].restaurant.name}<br><span class="cuisine">${responseJson.restaurants[i].restaurant.cuisines}</span><i class="fas fa-plus"></i><i class="fas fa-minus"></i>
+                ${restaurantsJson.name}<br><span class="cuisine">${restaurantsJson.cuisines}</span><i class="fas fa-plus"></i><i class="fas fa-minus"></i>
                 <div class=panelLinks>
-                    <a id="webLink" href='${responseJson.restaurants[i].restaurant.url}' target="_blank">Website</a>
-                    <a id="menuLink" href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
+                    <a id="webLink" href='${restaurantsJson.url}' target="_blank">Website</a>
+                    <a id="menuLink" href='${restaurantsJson.menu_url}' target="_blank">Menu</a>
                 </div>
             </button>
 
             <div class="panel hidden">
-                <img id="featuredImg" src="${responseJson.restaurants[i].restaurant.featured_image}" alt="featured image for restaurant result">
+                <img id="featuredImg" src="${restaurantsJson.featured_image}" alt="feature image for ${restaurantsJson.name}>
                 <div class=panelLinks>
-                    <a id="webLink" href='${responseJson.restaurants[i].restaurant.url}' target="_blank">Website</a>
-                    <a id="menuLink" href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
+                    <a id="webLink" href='${restaurantsJson.url}' target="_blank">Website</a>
+                    <a id="menuLink" href='${restaurantsJson.menu_url}' target="_blank">Menu</a>
+                    <p>${restaurantsJson.location.address}</p>
+                    <p>${restaurantsJson.location.locality_verbose}</p>
+                    <p>Average Cost for 2 $${restaurantsJson.average_cost_for_two}</p>
+                    <p>${restaurantsJson.user_rating.aggregate_rating}</p>
                 </div>
-                <p>Average Cost for 2: $${responseJson.restaurants[i].restaurant.average_cost_for_two}</p>
+                <p>Average Cost for 2: $${restaurantsJson.average_cost_for_two}</p>
             </div>
         </li>`)
         }
