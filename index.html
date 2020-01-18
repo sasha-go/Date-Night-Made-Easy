@@ -15,10 +15,12 @@
 
         <form id="js-form">
             <label for="city">What City Do You Live In?</label>
-            <input id="js-city" name="city" placeholder="Denver, CO" required> 
-            </input>
+            <input type="text" id="js-city" name="city" placeholder="Denver, CO" required> 
             <label for="budget">What is Your Budget for Two?</label>
             <input type="number" name="budget" id="js-budget" max="5000" min="10" placeholder="50" required>
+            <label for="cuisine">What Type of Food Are You Feeling?</label><br>
+            <select id="js-cuisineList">
+            </select><br>
             <button type="submit" id="submitButton">Date Time!</button>
         </form>
 

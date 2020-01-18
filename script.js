@@ -6,6 +6,34 @@ const zomatoApiKey = "bdf061b7ff13160c0b5ed3be06170ae7";
 // Zomato API
 const zomatoUrl = "https://developers.zomato.com/api/v2.1";
 
+// Function to generate types of cuisines on field dropdown
+const cuisineOptions = {
+    0: "Anything!",
+    3: "Asian", //3
+    159: "Brazilian", //159
+    100: "Desserts", //100
+    268: "Drinks", //268
+    55: "Italian", //55
+    45: "French", //45
+    143: "Healthy Food", //143
+    148: "Indian", //148
+    70: "Mediterranean", //70
+    73: "Mexican", //73
+    996: "New American", //996
+    471: "Southern", //471
+    177: "Sushi", //177
+    95: "Thai", //95
+    308: "Vegetarian", //308
+}
+
+let cuisineList = $("#js-cuisineList");
+$.each(cuisineOptions, function(val, text) {
+    cuisineList.append(
+        $('<option></option>').val(val).html(text)
+    );
+});
+
+
 // Function to generate entity_id for the user's city using /locations? endpoint
 function getEntityID(userCity) {
     const options = {
@@ -51,12 +79,14 @@ function getRestaurants(entity_id) {
         })
     };
 
+
     const params = {
         entity_id: entity_id,
         entity_type: "city",
         count: 15,
         sort: "rating",
-        order: "desc"
+        order: "desc",
+        cuisines: $('#js-cuisineList').val()
     };
 
     let queryString = $.param(params);
@@ -101,7 +131,7 @@ function displayRestaurants(responseJson) {
         let  restaurantsJson = responseJson.restaurants[i].restaurant;
         if (restaurantsJson.average_cost_for_two <= budget && restaurantsJson.user_rating.aggregate_rating > 0) {
         $('#results').append(`<li>
-        <img src="${restaurantsJson.featured_image}" id="featuredImg" alt="feature image for ${restaurantsJson.name}" onerror="imgError(this);"/>
+        <img src="${restaurantsJson.featured_image}" id="featuredImg" alt="feature image for ${restaurantsJson.name}">
         <a href='${restaurantsJson.url}' target="_blank">${restaurantsJson.name}</a> 
         | <a href='${restaurantsJson.menu_url}' target="_blank">Menu</a>
         <p>${restaurantsJson.location.address}</p>
@@ -114,17 +144,14 @@ function displayRestaurants(responseJson) {
     $('#results').removeClass("hidden");
 }
 
-function imgError(image) {
-    image.onerror = "";
-    image.src = "/images/noimage.gif";
-    return true;
-}
 
 function watchForm() {
     $('form').submit(event => {
       event.preventDefault();
       const userCity = $('#js-city').val();
       const budget = $('#js-budget').val();
+      let cuisine = $('#js-cuisineList').val();
+      console.log(cuisine);
       console.log(userCity)
       getEntityID(userCity);
     })
