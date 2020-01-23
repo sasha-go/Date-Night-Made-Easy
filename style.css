@@ -28,20 +28,20 @@ form {
   border-radius: 10px;
   padding: 25px;
   margin: auto;
-  top: 65px;
+  top: 50px;
   position: relative;
 }
 
-form input {
+form input, form select {
   display: block;
   margin-top: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   height: 30px;
   border-radius: 5px;
   font-size: 18px;
-  padding-right: 8px;
+  padding-left: 8px;
   background-color: #EEEEEE;
-  text-align: right;
+  text-align: left;
   border: none;
 }
 
@@ -56,7 +56,7 @@ form #js-budget {
 form label {
   color: #eee;
   font-size: 25px;
-  letter-spacing: .5px;
+  letter-spacing: .7px;
 }
 
 form #submitButton {
@@ -70,7 +70,6 @@ form #submitButton {
   font-size: 20px;
   font-weight: 700;
   font-family: bree serif;
-  margin-top: 40px;
   color: #2c2d2a;
 }
 
@@ -85,7 +84,7 @@ form #submitButton:hover {
 
 #results {
   position: relative;
-  top: 150px;
+  top: 113px;
 }
 
 #results li {
@@ -109,7 +108,24 @@ form #submitButton:hover {
   border-bottom: .5px solid #EB6A24;
 }
 
-#results li .accordion .panelLinksTablet {
+#results li .accordion:hover {
+  background-color: #ccc;
+}
+
+#results li .accordion .fa-star {
+  font-size: 15px;
+  color: #EB6A24;
+  margin-left: 8px;
+  bottom: 2px;
+  right: -3px;
+  position: relative;
+}
+
+#results li .accordion .rating {
+  font-weight: 100;
+}
+
+#results li .accordion .accordionLinks {
   display: none;
 }
 
@@ -136,16 +152,8 @@ form #submitButton:hover {
   font-family: Josefin Slab;
 }
 
-#results li .accordion .fa-minus {
-  display: none;
-}
-
-#results li .active, #results li .accordion:hover {
-  background-color: #ccc;
-}
-
 #results li .panel {
-  background-color: white;
+  background-color: #ccc;
   overflow: hidden;
 }
 
@@ -157,7 +165,6 @@ form #submitButton:hover {
 }
 
 #results li .panel .panelLinks {
-  display: inline-block;
   padding-left: 40px;
   top: 40px;
   margin: auto;
@@ -174,6 +181,7 @@ form #submitButton:hover {
   margin-bottom: 50px;
   font-family: bree serif;
   color: #393A36;
+  background-color: #eee;
 }
 
 #results li .panel .panelLinks a:hover {
@@ -185,24 +193,141 @@ form #submitButton:hover {
 }
 
 #results li .panel .panelLinks #webLink {
-  margin-right: 30px;
+  margin-right: 20px;
+  margin-left: 30px;
 }
 
-#results li .panel p {
-  color: #EB6A24;
+#results li .panel .restInfo p {
   display: block;
-  position: relative;
-  text-align: center;
   clear: left;
-  background-color: #393A36;
+  text-align: center;
+}
+
+#results li .panel .restInfo .address {
   font-family: Josefin Slab;
-  font-weight: 600;
-  font-size: 22px;
+  font-size: 23px;
+  position: relative;
+  bottom: -14px;
+}
+
+#results li .panel .restInfo .cost {
+  color: #EB6A24;
+  position: relative;
+  background-color: #393A36;
+  font-family: quicksand;
+  font-size: 18px;
   margin-bottom: 0;
-  padding: 12px;
+  padding: 9px;
+}
+
+#results li .panel .restInfo .cost span {
+  font-family: sacramento;
+  padding-left: 6px;
 }
 
 #results li .hidden {
   display: none;
+}
+
+@media screen and (min-width: 768px) {
+  #results li .accordion:hover .fa-plus {
+    display: none;
+  }
+  #results li .accordion .accordionLinks {
+    display: inline-block;
+    position: relative;
+    float: right;
+    top: -15px;
+  }
+  #results li .accordion .accordionLinks a {
+    text-decoration: none;
+    padding: 15px;
+    border: 1px solid #393A36;
+    border-radius: 8px;
+    font-family: bree serif;
+    color: #393A36;
+    font-size: 15px;
+    background-color: #eee;
+  }
+  #results li .accordion .accordionLinks a:hover {
+    background-color: #EB6A24;
+    color: #eee;
+    -webkit-transition: .1s ease-in;
+    transition: .1s ease-in;
+    border: none;
+  }
+  #results li .accordion .accordionLinks #webLinkTablet {
+    margin-right: 10px;
+  }
+  #results li .panel .panelLinks a {
+    display: none;
+  }
+  #results li .panel .restInfo {
+    position: relative;
+    display: inline-block;
+    float: right;
+    right: 0;
+  }
+  #results li .panel .restInfo p {
+    text-align: right;
+    padding-right: 20px;
+  }
+  #results li .panel .restInfo .cost {
+    background-color: rgba(0, 0, 0, 0);
+    padding-right: 20px;
+    color: #b24910;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .container .mainImg {
+    top: 150px;
+  }
+  .container h1 {
+    text-align: right;
+    padding: 75px 25px 95px 0;
+  }
+  .container form {
+    background-color: rgba(0, 0, 0, 0);
+    width: 570px;
+    padding: 20px 0 10px 30px;
+    top: 0;
+    position: absolute;
+  }
+  .container form input, .container form select {
+    display: inline-block;
+    margin-left: 15px;
+    margin-bottom: 20px;
+  }
+  .container form #js-city {
+    width: 240px;
+  }
+  .container form #js-budget {
+    width: 60px;
+  }
+  .container form .dropdown {
+    display: block;
+    width: 350px;
+    margin-top: 10px;
+  }
+  .container form .dropdown label {
+    display: block;
+    clear: right;
+  }
+  .container form .dropdown #js-cuisineList {
+    display: inline-block;
+    float: right;
+    position: relative;
+    top: -62px;
+  }
+  .container form #submitButton {
+    margin-left: 0;
+    position: relative;
+    top: -5px;
+  }
+  .container #results {
+    position: relative;
+    top: 420px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

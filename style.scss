@@ -1,5 +1,4 @@
 body {
-    //background-color: rgba(199, 118, 156, 0.973);
     font-family: 'quicksand', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0;
 }
@@ -17,46 +16,36 @@ h1 {
     font-family: bree serif;
     text-align: center;
     color: #EB6A24;
-    //color: white;
     font-size: 50px;
     background-color: #393A36;
     padding-bottom: 15px;
     margin-top: 0;
-    
-    // color: #393A36;
-    // background-color: #EB6A24;
-    //background-color: rgba(57,58,55,0.7);
 }
 
 form {
-    //background-color: #393A36;
     background-color: rgba(57,58,55,0.8);
     width: 355px;
-    //border: solid 1px black;
     border-radius: 10px;
     padding: 25px;
-    //margin-bottom: 14px;
     margin: auto;
-    top: 65px;
+    top: 50px;
     position: relative;
 
-    input {
+    input, select {
         display: block;
         margin-top: 12px;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         height: 30px;
         border-radius: 5px;
         font-size: 18px;
-        padding-right: 8px;
+        padding-left: 8px;
         background-color: #EEEEEE;
-        //background-color: lighten(#EB6A24, 35%);
-        text-align: right;
+        text-align: left;
         border: none;
     }
 
     #js-city {
         width: 50%;
-        //background-color: lighten(#EB6A24, 20%);
     }
 
     #js-budget {
@@ -66,13 +55,12 @@ form {
     label {
         color: #eee;
         font-size: 25px;
-        letter-spacing: .5px;
+        letter-spacing: .7px;
     }
 
     #submitButton {
         width: 120px;
         height: 50px;
-        //border: 1px solid black;
         border-radius: 5px;
         border: none;
         margin: auto;
@@ -81,7 +69,6 @@ form {
         font-size: 20px;
         font-weight: 700;
         font-family: bree serif;
-        margin-top: 40px;
         color: darken(#393A36, 5%);
 
         &:hover {
@@ -98,7 +85,7 @@ form {
 // accordion 
 #results {
     position: relative;
-    top: 150px;
+    top: 113px;
 
     li {
         list-style: none;
@@ -117,8 +104,25 @@ form {
             line-height: 1.5;
             font-family: quicksand;
             border-bottom: .5px solid #EB6A24;
-            
-            .panelLinksTablet {
+
+            &:hover {
+                background-color: #ccc;
+            }
+
+            .fa-star {
+                font-size: 15px;
+                color: #EB6A24;
+                margin-left: 8px;
+                bottom: 2px;
+                right: -3px;
+                position: relative;
+            }
+
+            .rating {
+                font-weight: 100;
+            }
+
+            .accordionLinks {
                 display: none;
             }
             
@@ -145,19 +149,11 @@ form {
                 top: 10px;
                 font-family: Josefin Slab;
             }
-
-            .fa-minus {
-                display: none;
-            }
         }
-        
-        .active, .accordion:hover {
-            background-color: #ccc;
-        }
+ 
 
         .panel {
-            //padding: 0 18px;
-            background-color: white;
+            background-color: #ccc;
             overflow: hidden;
 
             #featuredImg {
@@ -168,11 +164,12 @@ form {
             }
 
             .panelLinks {
-                display: inline-block;
+                //display: inline-block;
                 padding-left: 40px;
                 top: 40px;
                 margin: auto;
                 position: relative;
+                
 
                 a {
                     display: inline-block;
@@ -184,6 +181,7 @@ form {
                     margin-bottom: 50px;
                     font-family: bree serif;
                     color: #393A36;
+                    background-color: #eee;
 
                     &:hover {
                         background-color: #EB6A24;
@@ -194,23 +192,40 @@ form {
                 }
 
                 #webLink {
-                    //padding-bottom: 10px;
-                    margin-right: 30px;
+                    margin-right: 20px;
+                    margin-left: 30px;
                 }
             }
 
-            p {
-                color: #EB6A24;
-                display: block;
-                position: relative;
-                text-align: center;
-                clear: left;
-                background-color: #393A36;
-                font-family: Josefin Slab;
-                font-weight: 600;
-                font-size: 22px;
-                margin-bottom: 0;
-                padding: 12px;
+            .restInfo {
+                
+                p {
+                    display: block;
+                    clear: left;
+                    text-align: center;
+                }
+
+                .address {
+                    font-family: Josefin Slab;
+                    font-size: 23px;
+                    position: relative;
+                    bottom: -14px;
+                }
+
+                .cost {
+                    color: #EB6A24;
+                    position: relative;
+                    background-color: #393A36;
+                    font-family: quicksand;
+                    font-size: 18px;
+                    margin-bottom: 0;
+                    padding: 9px;
+
+                    span {
+                        font-family: sacramento;
+                        padding-left: 6px;
+                    }
+                }
             }
         }
 
@@ -222,10 +237,133 @@ form {
 
 // tablet
 @media screen and (min-width: 768px) {
+    #results li  {
+        
+        .accordion {
+            &:hover {
+                .fa-plus {
+                display: none;
+                }
+            }
 
+            .accordionLinks {
+                display: inline-block;
+                position: relative;
+                float: right;
+                top: -15px;
+                
+                a {
+                    text-decoration: none;
+                    padding: 15px;
+                    border: 1px solid #393A36;
+                    border-radius: 8px;
+                    font-family: bree serif;
+                    color: #393A36;
+                    font-size: 15px;
+                    background-color: #eee;
+
+                    &:hover {
+                        background-color: #EB6A24;
+                        color: #eee;
+                        transition: .1s ease-in;
+                        border: none;
+                    }
+                }
+                #webLinkTablet {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .panel {
+
+            .panelLinks {
+                a {
+                    display: none;
+                }
+            }
+
+            .restInfo {
+                position: relative;
+                display: inline-block;
+                float: right;
+                right: 0;
+
+                p {
+                    text-align: right;
+                    padding-right: 20px;
+                }
+
+                .cost {
+                    background-color: rgba(0,0,0,0);
+                    padding-right: 20px;
+                    color: darken(#EB6A24, 15%);
+                }
+            }
+        }
+    }
 }
-
 // desktop
 @media screen and (min-width: 1025px) {
+    .container {
 
+        .mainImg {
+            top: 150px;
+        }
+
+        h1 {
+            text-align: right;
+            padding: 75px 25px 95px 0;
+        }
+
+        form {
+            background-color: rgba(0,0,0,0);
+            width: 570px;
+            padding: 20px 0 10px 30px;
+            top: 0;
+            position: absolute;
+        
+            input, select {
+                display: inline-block;
+                margin-left: 15px;
+                margin-bottom: 20px;
+            }
+        
+            #js-city {
+                width: 240px;
+            }
+        
+            #js-budget {
+                width: 60px;
+            }
+            
+            .dropdown {
+                display: block;
+                width: 350px;
+                margin-top: 10px;
+
+                label {
+                    display: block;
+                    clear: right;
+                }
+
+                #js-cuisineList {
+                    display: inline-block;
+                    float: right;
+                    position: relative;
+                    top: -62px;
+                }
+            }
+
+            #submitButton {
+                margin-left: 0;
+                position: relative;
+                top: -5px;
+            }
+        }
+
+        #results {
+            position: relative;
+            top: 420px;
+        }
+    }
 }

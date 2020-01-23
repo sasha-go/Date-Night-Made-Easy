@@ -33,7 +33,6 @@ $.each(cuisineOptions, function(val, text) {
     );
 });
 
-
 // Function to generate entity_id for the user's city using /locations? endpoint
 function getEntityID(userCity) {
     const options = {
@@ -79,7 +78,6 @@ function getRestaurants(entity_id) {
         })
     };
 
-
     const params = {
         entity_id: entity_id,
         entity_type: "city",
@@ -92,7 +90,6 @@ function getRestaurants(entity_id) {
     let queryString = $.param(params);
     const url = zomatoUrl + '/search?' + queryString;
     console.log(queryString);
-
 
     fetch(url, options).then(response => {
             if (response.ok) {
@@ -113,29 +110,10 @@ function getRestaurants(entity_id) {
         })
 }
 
-
 function displayRestaurants(responseJson) {
     console.log(responseJson);
     $('#results').empty();
     const budget = $('#js-budget').val();
-
-    // let randomNum = Math.floor(Math.random(responseJson.restaurants.length) * 5) + 1;
-    // console.log(randomNum);
-
-    // for (let i = randomNum; i < responseJson.restaurants.length; i++) {
-    //     let  restaurantsJson = responseJson.restaurants[i].restaurant;
-    //     if (restaurantsJson.average_cost_for_two <= budget && restaurantsJson.user_rating.aggregate_rating > 0) {
-    //     $('#results').append(
-    //     `<li>
-    //     <img src="${restaurantsJson.featured_image}" id="featuredImg" alt="feature image for ${restaurantsJson.name}">
-    //     <a href='${restaurantsJson.url}' target="_blank">${restaurantsJson.name}</a> 
-    //     | <a href='${restaurantsJson.menu_url}' target="_blank">Menu</a>
-    //     <p>${restaurantsJson.location.address}</p>
-    //     <p>${restaurantsJson.location.locality_verbose}</p>
-    //     <p>Average Cost for 2 $${restaurantsJson.average_cost_for_two}</p>
-    //     <p>${restaurantsJson.user_rating.aggregate_rating}</p>
-    //     <p>${restaurantsJson.cuisines}</p>
-
 
     let randomNum = Math.floor(Math.random(responseJson.restaurants.length) * 5) + 1;
     console.log(randomNum);
@@ -146,31 +124,27 @@ function displayRestaurants(responseJson) {
         $('#results').append(
         `<li>
             <button class="accordion">
-<<<<<<< HEAD
-                ${responseJson.restaurants[i].restaurant.name}<br><span class="cuisine">${responseJson.restaurants[i].restaurant.cuisines}</span><i class="fas fa-plus"></i><i class="fas fa-minus"></i>
-                <div class=panelLinksTablet>
-                    <a id="webLink" href='${responseJson.restaurants[i].restaurant.url}' target="_blank">Website</a>
-                    <a id="menuLink" href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
-=======
-                ${restaurantsJson.name}<br><span class="cuisine">${restaurantsJson.cuisines}</span><i class="fas fa-plus"></i><i class="fas fa-minus"></i>
-                <div class=panelLinks>
-                    <a id="webLink" href='${restaurantsJson.url}' target="_blank">Website</a>
-                    <a id="menuLink" href='${restaurantsJson.menu_url}' target="_blank">Menu</a>
->>>>>>> 4d64e821fd4bb9b4bfbca8ef892c982a06f353eb
+                ${responseJson.restaurants[i].restaurant.name}
+                <i class="fas fa-star"></i>
+                <span class="rating"><em>${restaurantsJson.user_rating.aggregate_rating}</em></span><br>
+                <span class="cuisine">${responseJson.restaurants[i].restaurant.cuisines}</span><i class="fas fa-plus"></i>
+                
+                <div class="accordionLinks">
+                    <a id="webLinkTablet" href='${responseJson.restaurants[i].restaurant.url}' target="_blank">Website</a>
+                    <a id="menuLinkTablet" href='${responseJson.restaurants[i].restaurant.menu_url}' target="_blank">Menu</a>
                 </div>
             </button>
 
             <div class="panel hidden">
-                <img id="featuredImg" src="${restaurantsJson.featured_image}" alt="feature image for ${restaurantsJson.name}>
+                <img id="featuredImg" src="${restaurantsJson.featured_image}" alt="feature image for ${restaurantsJson.name}">
                 <div class=panelLinks>
-                    <a id="webLink" href='${restaurantsJson.url}' target="_blank">Website</a>
-                    <a id="menuLink" href='${restaurantsJson.menu_url}' target="_blank">Menu</a>
-                    <p>${restaurantsJson.location.address}</p>
-                    <p>${restaurantsJson.location.locality_verbose}</p>
-                    <p>Average Cost for 2 $${restaurantsJson.average_cost_for_two}</p>
-                    <p>${restaurantsJson.user_rating.aggregate_rating}</p>
+                    <a id="webLink" href="${restaurantsJson.url}" target="_blank">Website</a>
+                    <a id="menuLink" href="${restaurantsJson.menu_url}" target="_blank">Menu</a>
                 </div>
-                <p>Average Cost for 2: $${restaurantsJson.average_cost_for_two}</p>
+                <div class="restInfo">
+                    <p class="address">${restaurantsJson.location.address}</p>
+                    <p class="cost"><em>Average Cost for 2:</em> <span>$${restaurantsJson.average_cost_for_two}</span></p>
+                </div>
             </div>
         </li>`)
         }
@@ -184,6 +158,7 @@ function clickAccordion() {
         //console.log(e.target);
         const button = $(e.target);
         button.siblings('.panel').toggleClass('hidden');
+        
     });
 }
 
@@ -194,7 +169,7 @@ function watchForm() {
       const budget = $('#js-budget').val();
       let cuisine = $('#js-cuisineList').val();
       console.log(cuisine);
-      console.log(userCity)
+      console.log(userCity);
       getEntityID(userCity);
     })
   }
