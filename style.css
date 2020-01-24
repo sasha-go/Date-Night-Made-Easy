@@ -301,9 +301,11 @@ form #submitButton:hover {
   }
   .container form #js-city {
     width: 240px;
+    margin-left: 8px;
   }
   .container form #js-budget {
     width: 60px;
+    margin-left: 8px;
   }
   .container form .dropdown {
     display: block;
