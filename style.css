@@ -7,7 +7,7 @@ body {
   position: absolute;
   z-index: -1;
   top: 0;
-  left: -50%;
+  left: -60%;
   right: -50%;
   margin: auto;
 }
@@ -16,7 +16,7 @@ h1 {
   font-family: bree serif;
   text-align: center;
   color: #EB6A24;
-  font-size: 50px;
+  font-size: 40px;
   background-color: #393A36;
   padding-bottom: 15px;
   margin-top: 0;
@@ -24,11 +24,11 @@ h1 {
 
 form {
   background-color: rgba(57, 58, 55, 0.8);
-  width: 355px;
+  width: 300px;
   border-radius: 10px;
   padding: 25px;
   margin: auto;
-  top: 50px;
+  top: 30px;
   position: relative;
 }
 
@@ -36,9 +36,9 @@ form input, form select {
   display: block;
   margin-top: 12px;
   margin-bottom: 5px;
-  height: 30px;
+  height: 25px;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 16px;
   padding-left: 8px;
   background-color: #EEEEEE;
   text-align: left;
@@ -46,7 +46,7 @@ form input, form select {
 }
 
 form #js-city {
-  width: 50%;
+  width: 60%;
 }
 
 form #js-budget {
@@ -55,19 +55,19 @@ form #js-budget {
 
 form label {
   color: #eee;
-  font-size: 25px;
+  font-size: 21px;
   letter-spacing: .7px;
 }
 
 form #submitButton {
-  width: 120px;
-  height: 50px;
+  width: 115px;
+  height: 43px;
   border-radius: 5px;
   border: none;
   margin: auto;
   display: block;
   background-color: #EB6A24;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   font-family: bree serif;
   color: #2c2d2a;
@@ -106,6 +106,8 @@ form #submitButton:hover {
   line-height: 1.5;
   font-family: quicksand;
   border-bottom: .5px solid #EB6A24;
+  position: relative;
+  top: -35px;
 }
 
 #results li .accordion:hover {
@@ -155,6 +157,8 @@ form #submitButton:hover {
 #results li .panel {
   background-color: #ccc;
   overflow: hidden;
+  position: relative;
+  top: -35px;
 }
 
 #results li .panel #featuredImg {
@@ -230,6 +234,10 @@ form #submitButton:hover {
 }
 
 @media screen and (min-width: 768px) {
+  .container h1 {
+    font-size: 50px;
+    padding-bottom: 15px;
+  }
   #results li .accordion:hover .fa-plus {
     display: none;
   }
@@ -282,10 +290,13 @@ form #submitButton:hover {
 @media screen and (min-width: 1025px) {
   .container .mainImg {
     top: 150px;
+    width: 100vw;
+    left: 0;
+    right: 0;
   }
   .container h1 {
     text-align: right;
-    padding: 75px 25px 95px 0;
+    padding: 65px 25px 85px 0;
   }
   .container form {
     background-color: rgba(0, 0, 0, 0);
@@ -297,7 +308,12 @@ form #submitButton:hover {
   .container form input, .container form select {
     display: inline-block;
     margin-left: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    height: 25px;
+    font-size: 18px;
+  }
+  .container form label {
+    font-size: 24px;
   }
   .container form #js-city {
     width: 240px;
@@ -315,17 +331,23 @@ form #submitButton:hover {
   .container form .dropdown label {
     display: block;
     clear: right;
+    font-size: 25px;
   }
   .container form .dropdown #js-cuisineList {
     display: inline-block;
     float: right;
     position: relative;
-    top: -62px;
+    top: -59px;
+    height: 25px;
+    font-size: 18px;
   }
   .container form #submitButton {
     margin-left: 0;
     position: relative;
     top: -5px;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
   }
   .container #results {
     position: relative;
