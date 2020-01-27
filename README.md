@@ -19,6 +19,8 @@
 
 
 <h2>Live Demo</h2>
+<a href="https://sasha-go.github.io/Date-Night-Made-Easy/">Demo Now!</a>
+
 <h4>Home Page</h4>
 <img src="https://live.staticflickr.com/65535/49436182003_b21caf3f3f_b.jpg" width="220" height="400" alt="Date Night Made Easy Home Page">
 
