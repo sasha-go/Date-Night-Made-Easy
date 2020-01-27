@@ -26,6 +26,7 @@
 
 <h4>Enter Your Location and Budget</h4>
 <img src="https://live.staticflickr.com/65535/49436181973_6df1c5ff93_b.jpg" width="220" height="400" alt="Date Night Made Easy Enter Location">
+<img src="https://live.staticflickr.com/65535/49450412547_86c1df6f3a_w.jpg" width="220" height="400" alt="Date Night Made Easy Enter Location">
 
 <h4>Restaurant Results</h4>
 <img src="https://live.staticflickr.com/65535/49436877272_92c0c5070b_b.jpg" width="220" height="400" alt="Date Night Made Easy Results">
