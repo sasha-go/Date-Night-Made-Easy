@@ -25,9 +25,7 @@
 <img src="https://live.staticflickr.com/65535/49436182003_b21caf3f3f_b.jpg" width="220" height="400" alt="Date Night Made Easy Home Page">
 
 <h4>Enter Your Location and Budget</h4>
-<img src="https://live.staticflickr.com/65535/49436181973_6df1c5ff93_b.jpg" width="220" height="400" alt="Date Night Made Easy Enter Location">
-<img src="https://live.staticflickr.com/65535/49450412547_86c1df6f3a_w.jpg" width="220" height="400" alt="Date Night Made Easy Enter Location">
-<img src="https://live.staticflickr.com/65535/49436181973_6df1c5ff93_b.jpg" width="220" height="400" alt="Date Night Made Easy Enter Location">
+<img src="https://live.staticflickr.com/65535/49450412547_2b305b23d5_o.png" width="220" height="400" alt="Date Night Made Easy Enter Location">
 
 
 <h4>Restaurant Results</h4>
