@@ -48,8 +48,6 @@ function getEntityID(userCity) {
     let queryString = $.param(params);
     const url = zomatoUrl + '/locations?' + queryString;
 
-    console.log(`Finding location id for ${userCity}`);
-
     fetch(url, options)
         .then(response => {
         if (response.ok) {
@@ -59,8 +57,6 @@ function getEntityID(userCity) {
             }) 
             .then(responseJson => {
                 getRestaurants(responseJson.location_suggestions[0].entity_id)
-                console.log(responseJson);
-                console.log(responseJson.location_suggestions[0].entity_id);
             })
             .catch(err => {
                 $('#js-error-message').text(`Uh oh, something broke: ${err.message}`);
@@ -69,8 +65,6 @@ function getEntityID(userCity) {
 }
 
 // Generate restaurants based on the location the user entered using the entity_id generated from getEntityID()
-// https://developers.zomato.com/api/v2.1/search?entity_id=305&entity_type=city
-
 function getRestaurants(entity_id) {
     const options = {
         headers: new Headers({
@@ -89,7 +83,6 @@ function getRestaurants(entity_id) {
 
     let queryString = $.param(params);
     const url = zomatoUrl + '/search?' + queryString;
-    console.log(queryString);
 
     fetch(url, options).then(response => {
             if (response.ok) {
@@ -99,24 +92,17 @@ function getRestaurants(entity_id) {
         })
         .then(responseJson =>{
             displayRestaurants(responseJson)
-            console.log(responseJson);
         }) 
-        // .then(responseJson => {
-        //     console.log(responseJson);
-        //    resp displayRestaurants(responseJson))
-        //})    
         .catch(err => {
             $('#js-error-message').text(`Something Failed ${err.message}`);
         })
 }
 
 function displayRestaurants(responseJson) {
-    console.log(responseJson);
     $('#results').empty();
     const budget = $('#js-budget').val();
 
     let randomNum = Math.floor(Math.random(responseJson.restaurants.length) * 5) + 1;
-    console.log(randomNum);
 
     for (let i = randomNum; i < responseJson.restaurants.length; i++) {
         let  restaurantsJson = responseJson.restaurants[i].restaurant;
@@ -155,7 +141,6 @@ function displayRestaurants(responseJson) {
 
 function clickAccordion() {
     $('body').on('click', '.accordion', function(e) {
-        //console.log(e.target);
         const button = $(e.target);
         button.siblings('.panel').toggleClass('hidden');
         
@@ -168,35 +153,14 @@ function watchForm() {
       const userCity = $('#js-city').val();
       const budget = $('#js-budget').val();
       let cuisine = $('#js-cuisineList').val();
-      console.log(cuisine);
-      console.log(userCity);
       getEntityID(userCity);
     })
-  }
+}
 
-  function main() {
-      watchForm();
-      clickAccordion();
-  }
+function main() {
+    watchForm();
+    clickAccordion();
+}
 
-  $(main);
+$(main);
 
-
-
-// Function to generate restaurants 
-// using city id variable
-
-
-// Display Results 
-// filter by "average_cost_for_two" <= budget
-// return featured image 
-// restaurant name (include link with name)
-// address
-// phone number
-// average_cost_for_two
-// menu url 
-// aggregate rating 
-
-
-
-// Watch form event listener 
