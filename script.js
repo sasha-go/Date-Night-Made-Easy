@@ -98,6 +98,7 @@ function getRestaurants(entity_id) {
         })
 }
 
+// Display restaurants results using Json response after getting restaurants from entity_id
 function displayRestaurants(responseJson) {
     $('#results').empty();
     const budget = $('#js-budget').val();
@@ -139,6 +140,7 @@ function displayRestaurants(responseJson) {
     $('#results').removeClass("hidden");
 }
 
+// Accordion to style restaurant results
 function clickAccordion() {
     $('body').on('click', '.accordion', function(e) {
         const button = $(e.target);
@@ -147,6 +149,7 @@ function clickAccordion() {
     });
 }
 
+// Watch form event listener 
 function watchForm() {
     $('form').submit(event => {
       event.preventDefault();
