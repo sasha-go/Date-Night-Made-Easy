@@ -351,7 +351,7 @@ form #submitButton:hover {
   }
   .container #results {
     position: relative;
-    top: 420px;
+    top: 1px;
   }
 }
 /*# sourceMappingURL=style.css.map */
