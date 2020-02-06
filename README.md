@@ -22,17 +22,17 @@
 <a href="https://sasha-go.github.io/Date-Night-Made-Easy/">Demo Now!</a>
 
 <h4>Home Page</h4>
-<img src="https://live.staticflickr.com/65535/49436182003_b21caf3f3f_b.jpg" width="220" height="400" alt="Date Night Made Easy Home Page">
+<img src="https://live.staticflickr.com/65535/49436182003_b21caf3f3f_b.png" width="220" height="400" alt="Date Night Made Easy Home Page">
 
 <h4>Enter Your Location and Budget</h4>
 <img src="https://live.staticflickr.com/65535/49450412547_2b305b23d5_o.png" width="220" height="400" alt="Date Night Made Easy Enter Location">
 
 
 <h4>Restaurant Results</h4>
-<img src="https://live.staticflickr.com/65535/49436877272_92c0c5070b_b.jpg" width="220" height="400" alt="Date Night Made Easy Results">
+<img src="https://live.staticflickr.com/65535/49436877272_92c0c5070b_b.png" width="220" height="400" alt="Date Night Made Easy Results">
 
 <h4>Restauarant Information</h4>
-<img src="https://live.staticflickr.com/65535/49436181943_c8b2bbe323_b.jpg" width="220" height="400" alt="Date Night Made Easy Restaurant Information">
+<img src="https://live.staticflickr.com/65535/49436181943_c8b2bbe323_b.png" width="220" height="400" alt="Date Night Made Easy Restaurant Information">
 
 <h2>Technologies</h2>
 <ul>
